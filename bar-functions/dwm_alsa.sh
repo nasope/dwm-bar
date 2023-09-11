@@ -9,7 +9,8 @@
 dwm_alsa () {
 	STATUS=$(amixer sget Master | tail -n1 | sed -r "s/.*\[(.*)\]/\1/")
     VOL=$(amixer get Master | tail -n1 | sed -r "s/.*\[(.*)%\].*/\1/")
-    printf "%s" "$SEP1"
+    #printf "%s" "$SEP1"
+    printf " | "
     if [ "$IDENTIFIER" = "unicode" ]; then
     	if [ "$STATUS" = "off" ]; then
 	            printf "🔇"
@@ -37,7 +38,8 @@ dwm_alsa () {
         	fi
         fi
     fi
-    printf "%s\n" "$SEP2"
+    #printf "%s\n" "$SEP2"
+    printf " | \n"
 }
 
 dwm_alsa

@@ -1,0 +1,92 @@
+#!/bin/sh
+
+# A dwm_bar function to read the battery level and status
+# Joe Standring <git@joestandring.com>
+# GNU GPLv3
+
+dwm_battery () {
+    # Change BAT1 to whatever your battery is identified as. Typically BAT0 or BAT1
+    CHARGE=$(cat /sys/class/power_supply/BAT0/capacity)
+    STATUS=$(cat /sys/class/power_supply/BAT0/status)
+
+    #printf "%s" "$SEP1"
+    printf " | "
+    if [ "$IDENTIFIER" = "unicode" ]; then
+        if [ "$STATUS" = "Charging" ]; then
+            if ["$CHARGE" >= 90]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+            if ["$CHARGE" >= 80] && ["$CHARGE" < 90]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+            if ["$CHARGE" >= 70] && ["$CHARGE" < 80]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+            if ["$CHARGE" >= 60] && ["$CHARGE" < 70]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+            if ["$CHARGE" >= 50] && ["$CHARGE" < 60]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+            if ["$CHARGE" >= 40] && ["$CHARGE" < 50]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+            if ["$CHARGE" >= 30] && ["$CHARGE" < 40]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+            if ["$CHARGE" >= 20] && ["$CHARGE" < 30]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+            if ["$CHARGE" >= 10] && ["$CHARGE" < 20]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+            if ["$CHARGE" >= 5] && ["$CHARGE" < 10]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+            if ["$CHARGE" >= 0] && ["$CHARGE" < 5]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+        else
+            if ["$CHARGE" >= 90]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+            if ["$CHARGE" >= 80] && ["$CHARGE" < 90]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+            if ["$CHARGE" >= 70] && ["$CHARGE" < 80]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+            if ["$CHARGE" >= 60] && ["$CHARGE" < 70]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+            if ["$CHARGE" >= 50] && ["$CHARGE" < 60]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+            if ["$CHARGE" >= 40] && ["$CHARGE" < 50]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+            if ["$CHARGE" >= 30] && ["$CHARGE" < 40]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+            if ["$CHARGE" >= 20] && ["$CHARGE" < 30]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+            if ["$CHARGE" >= 10] && ["$CHARGE" < 20]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+            if ["$CHARGE" >= 5] && ["$CHARGE" < 10]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+            if ["$CHARGE" >= 0] && ["$CHARGE" < 5]; then
+              printf " %s%% %s" "$CHARGE"
+            fi
+        fi
+    else
+        printf "BAT %s%% %s" "$CHARGE" "$STATUS"
+    fi
+    #printf "%s\n" "$SEP2"
+    printf " | \n"
+}
+
+dwm_battery
+

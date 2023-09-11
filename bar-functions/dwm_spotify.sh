@@ -14,7 +14,7 @@ dwm_spotify () {
     elif ps -C spotifyd > /dev/null; then
         PLAYER="spotifyd"
     fi
-
+  
     if [ "$PLAYER" = "spotify" ] || [ "$PLAYER" = "spotifyd" ]; then
         ARTIST=$(playerctl metadata artist)
         TRACK=$(playerctl metadata title)
@@ -29,7 +29,7 @@ dwm_spotify () {
             else
                 STATUS="⏸"
             fi
-            
+
             if [ "$SHUFFLE" = "On" ]; then
                 SHUFFLE=" 🔀"
             else
@@ -48,9 +48,10 @@ dwm_spotify () {
                 SHUFFLE=""
             fi
         fi
-        
+
         if [ "$PLAYER" = "spotify" ]; then
-            printf "%s%s %s - %s " "$SEP1" "$STATUS" "$ARTIST" "$TRACK"
+          #"$STATUS" "$ARTIST"
+            printf "%s%s %s - %s " "$SEP1" "$STATUS" "$TRACK"
             printf "%0d:%02d" $((DURATION%3600/60)) $((DURATION%60))
             printf "%s\n" "$SEP2"
         else
